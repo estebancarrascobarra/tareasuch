@@ -29,4 +29,6 @@ Funciona mediante **pdfLaTeX**:
 ```bash
 pdflatex main.tex
 
+---
+
 ![Captura](imagenes/screenshot.png)
