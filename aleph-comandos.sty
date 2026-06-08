@@ -1,0 +1,236 @@
+\NeedsTeXFormat{LaTeX2e}[2009/09/24]
+\ProvidesPackage{aleph-comandos}[2026/06/08 v1.2.1]
+\RequirePackage{ifthen}
+\RequirePackage{calc}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{xcolor}
+\RequirePackage{physics}
+\RequirePackage{mathtools}
+\RequirePackage{tensor}
+\RequirePackage{slashed}
+\RequirePackage{siunitx}
+\RequirePackage[capitalize]{cleveref}
+\RequirePackage{tcolorbox}
+\RequirePackage{csquotes}
+
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\allowdisplaybreaks
+\sisetup{separate-uncertainty = true}
+\tcbuselibrary{theorems, breakable, skins}
+\DeclareQuoteAlias{english}{spanish}
+\MakeOuterQuote{"}
+
+\definecolor{colortext}{HTML}{003277}
+\definecolor{colordef}{HTML}{00A1DE}
+
+\newcounter{problemaCounter}
+
+\newtcolorbox{problema}[1]{
+    before={
+        \stepcounter{problemaCounter}
+        \ifnum\value{problemaCounter}>1
+            \clearpage
+        \fi
+    },
+    colback=gray!15,
+    colframe=colortext,
+    coltitle=white, 
+    fonttitle=\bfseries\large, 
+    title={#1}, 
+    boxrule=0.8pt, 
+    breakable,
+    pad at break*=2mm,
+    bottom=0mm 
+}
+
+\newtcolorbox{desarrollo}{
+    colback=white,
+    colframe=colortext!80!black,
+    title=\textbf{Desarrollo},
+    fonttitle=\bfseries\small,
+    coltitle=white,
+    boxrule=0.5pt,
+    left=3mm, right=3mm, top=3mm, bottom=3mm,
+    sharp corners=north,
+    enhanced,
+    breakable,
+    before skip=0pt,
+    attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    boxed title style={colback=colortext!80!black}
+}
+
+\newtcolorbox{formulario}[1]{
+    colback=white,
+    colframe=gray!40,
+    title=\textbf{#1},
+    fonttitle=\bfseries,
+    coltitle=black,
+    boxrule=0.5pt,
+    sharp corners,
+    enhanced
+}
+\newcommand{\funcion}[5]{%
+    {\setlength{\arraycolsep}{2pt}
+    \begin{array}{r@{\,}ccl}
+        #1\colon & #2 & \longrightarrow & #3\\
+                & #4 & \longmapsto & \displaystyle#5
+    \end{array}
+    }
+}
+\newcommand{\func}[3]{ #1\colon #2 \rightarrow  #3}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Zbb}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\reales}{\mathbb{R}}
+
+\@ifundefined{C}
+    {\newcommand{\C}{\mathbb{C}}}
+    {\renewcommand{\C}{\mathbb{C}}}
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Kbb}{\mathbb{K}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Pol}{\mathcal{P}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\Mat}[3][\R]{#1^{#2\times #3}}
+\newcommand{\Ibb}{\mathbb{I}}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\rec}{rec}
+\DeclareMathOperator{\Rec}{Rec}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Img}{Img}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\rang}{rang}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\cof}{cof}
+\DeclareMathOperator{\gen}{gen}
+\DeclareMathOperator{\proy}{proy}
+\let\norm\relax
+\DeclareMathOperator{\norm}{norm}
+\DeclareMathOperator{\inte}{int}
+
+\renewcommand{\sin}{\sen}
+\let\arctan\relax
+\DeclareMathOperator{\arctan}{arc\,tan}
+\let\arccsc\relax
+\DeclareMathOperator{\arccsc}{arc\,csc}
+\let\arccot\relax
+\DeclareMathOperator{\arccot}{arc\,cot}
+\let\arcsec\relax
+\DeclareMathOperator{\arcsec}{arc\,sec}
+\let\arcsen\relax
+\DeclareMathOperator{\arcsen}{arc\,sen}
+\let\arccos\relax
+\DeclareMathOperator{\arccos}{arc\,cos}
+\let\arcsin\relax
+\DeclareMathOperator{\arcsin}{arc\,sen}
+
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\graf}{graf}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\CVA}{CVA}
+\DeclareMathOperator{\Sol}{Sol}
+\DeclareMathOperator{\sol}{Sol}
+\DeclareMathOperator{\Cis}{Cis}
+\DeclareMathOperator{\cis}{Cis}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Var}{Var}
+\let\Tr\relax
+\DeclareMathOperator{\Tr}{tr}
+\let\tr\relax
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\mcd}{mcd}
+\DeclareMathOperator{\mcm}{mcm}
+\DeclareMathOperator{\dive}{div}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\partes}{\mathcal{P}}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\norma}[1]{%
+    \left\|\ifthenelse{\equal{#1}{}}
+                  {\cdot}{#1}
+    \right\|}
+\newcommand{\prodinner}[2]{%
+    \left\langle\ifthenelse{\equal{#1}{}\and\equal{#2}{}}
+               {\cdot,\cdot}
+               {#1,\, #2}
+    \right\rangle}
+\newcommand{\conjugate}[1]{\overline{#1}}
+\newcommand{\parcial}[2]{\dfrac{\partial #1 }{\partial #2}}
+\newcommand{\derivada}[2]{\dfrac{d #1 }{d #2}}
+\renewcommand{\setminus}{\smallsetminus}
+\newcommand{\sset}{\subseteq}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\vepsilon}{\varepsilon}
+\newcommand{\texty}{\qquad\text{y}\qquad}
+\newcommand{\yds}{\quad\text{y}\quad}
+\newcommand{\texto}{\qquad\text{o}\qquad}
+\newcommand{\ods}{\quad\text{o}\quad}
+\newcommand{\siysolosi}{\quad\text{si y solo si}\quad}
+\newcommand{\ssi}{\quad\text{si y solo si}\quad}
+\newcommand{\degre}{\ensuremath{^\circ}}
+\let\grad\relax
+\newcommand{\grad}{\ensuremath{^\circ}}
+
+\newcommand{\dlim}{\displaystyle\lim}
+\newcommand{\Lim}{\displaystyle\lim}
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\Sum}{\displaystyle\sum}
+\newcommand{\Binom}{\displaystyle\binom}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\Int}{\displaystyle\int}
+
+\newcommand{\Di}{\Longleftrightarrow}
+\newcommand{\dimp}{\Leftrightarrow}
+\newcommand{\Dimp}{\Longleftrightarrow}
+\newcommand{\qDimp}{\quad\Longleftrightarrow\quad}
+\newcommand{\Imp}{\Longrightarrow}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\qImp}{\quad\Longrightarrow\quad}
+\newcommand{\qland}{\quad \land \quad }
+\newcommand{\qlor}{\quad \lor \quad }
+\newcommand{\orm}{\quad \vee \quad }
+\newcommand{\andm}{\quad \wedge \quad }
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\lop}{\left]}
+\newcommand{\lcl}{\left[}
+\newcommand{\rop}{\right[}
+\newcommand{\rcl}{\right]}
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+\newcommand{\open}[1]{\left]#1\right[}
+\newcommand{\openl}[1]{\left]#1\right]}
+\newcommand{\openr}[1]{\left[#1\right[}
+\newcommand{\close}[1]{\left[#1\right]}
+
+\newcommand{\suc}[2][n]{\left(#2\right)_{#1\in\mathbb{\N}}}
+\newcommand{\sucl}[2][n]{\left\{#2\right\}_{#1\in\mathbb{\N}}}
+\newcommand{\comentario}[1]{\textcolor{red}{#1}}
+
+\newcommand{\veci}{\mathbf{i}}
+\newcommand{\vecj}{\mathbf{j}}
+\newcommand{\veck}{\mathbf{k}}
+
+\emergencystretch=1em
+\makeatletter
+\let\original@subsection\subsection
+\renewcommand{\subsection}{\@ifstar{\@subsectionsazul}{\@subsectionnormal}}
+
+\newcommand{\@subsectionsazul}[1]{%
+  {\color{colortext}\original@subsection*{#1}}%
+}
+\newcommand{\@subsectionnormal}[1]{%
+  \original@subsection{#1}%
+}
+\makeatother
+\endinput
