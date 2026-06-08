@@ -1,6 +1,8 @@
 # Plantilla Modular de LaTeX para Física Teórica y Matemáticas
 
-Entorno de trabajo desacoplado y optimizado para la resolución estructurada de problemas de postgrado, cálculo tensorial y física matemática.
+Plantilla LaTeX optimizada para la resolución estructurada de problemas de postgrado, cálculo tensorial y física matemática.
+
+https://www.overleaf.com/read/wvvymxgkkcdh#8a00c8
 
 ## 📂 Estructura del Proyecto
 
