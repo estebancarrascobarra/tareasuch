@@ -34,3 +34,14 @@ El proyecto está diseñado para compilarse mediante **pdfLaTeX**:
 
 ```bash
 pdflatex main.tex
+
+---
+
+## ⚙️ Configuración del Entorno
+
+Distribución de LaTeX (TeX Live o MiKTeX) con los paquetes especificados en aleph-comandos.sty.
+
+---
+
+## 📜 Licencia
+Componentes de la plantilla base pertenecientes al proyecto Alephsub0, modificados y adaptados en diseño y sintaxis, bajo Licencia MIT.
