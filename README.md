@@ -31,4 +31,4 @@ pdflatex main.tex
 
 ---
 
-![Captura](imagenes/screenshot.png)
+![Captura](Logos/screenshot.png)
